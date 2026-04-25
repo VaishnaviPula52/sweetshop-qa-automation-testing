@@ -3,5 +3,4 @@ playwright-report/
 test-results/
 allure-results/
 .env
-package-lock.json
 
