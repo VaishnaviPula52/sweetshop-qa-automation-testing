@@ -1,0 +1,20 @@
+{
+  "name": "sweetshop-playwright",
+  "version": "1.0.0",
+  "description": "Sweet Shop E2E Automation — Playwright + TypeScript + Allure",
+  "scripts": {
+    "test":             "npx playwright test",
+    "test:headed":      "npx playwright test --headed",
+    "test:ui":          "npx playwright test --ui",
+    "test:allure":      "npx playwright test && npm run allure:generate && npm run allure:open",
+    "allure:generate":  "npx allure-commandline generate allure-results --clean -o allure-report",
+    "allure:open":      "npx allure-commandline open allure-report",
+    "report":           "npx playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test":   "^1.44.0",
+    "@types/node":        "^20.0.0",
+    "allure-playwright":  "^3.0.0",
+    "allure-commandline": "^2.30.0"
+  }
+}
