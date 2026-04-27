@@ -135,18 +135,4 @@ Benefits: locators centralised, tests read like plain English, easy to maintain.
 
 ---
 
-## CI/CD — GitHub Actions
 
-Pipeline triggers on every PR to `main` and every push to `main`.
-
-Steps:
-1. Checkout code
-2. Install Node.js 20
-3. npm ci
-4. Install Chromium
-5. Run all tests
-6. Install Java (required for Allure CLI)
-7. Generate Allure report
-8. Upload Allure report as artifact (kept 30 days)
-9. Upload Playwright HTML report (kept 14 days)
-10. Upload screenshots/videos on failure (kept 7 days)
