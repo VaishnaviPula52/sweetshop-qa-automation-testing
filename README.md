@@ -3,6 +3,30 @@
 
 ---
 
+## About This Project
+
+This repository contains the end-to-end automation scripts for the [Sweet Shop](https://sweetshop.netlify.app) web application, built using **Playwright** and **TypeScript** as part of a structured QA learning exercise.
+
+The full QA documentation — including the test plan, test strategy, test cases, defect log, and RTM — lives in a dedicated Google Drive folder and is linked below.
+
+---
+
+## QA Artifacts & Links
+
+> All QA outputs for this project are maintained in a single Google Drive folder. The **Main QA Document** is the single entry point — it contains the test plan, strategy, and direct links to all other artifacts.
+
+| Artifact | Link | Format |
+|---|---|---|
+| 📋 Main QA Document (Plan, Strategy + all links) | [Open Document](https://docs.google.com/document/d/1JEEPAi2YdHGHvdxhvKWjpzN9fnDE83rweK0LITLA0CQ/edit?usp=drive_link) | Google Doc |
+| 📁 QA Drive Folder (all artifacts) | [Open Folder](https://drive.google.com/drive/folders/1tvM3iJ6DrtE_Zq561hvlZW8wZfb4l-Rv?usp=sharing) | Google Drive |
+| 🧪 Test Cases | Linked inside Main QA Document | Google Sheets |
+| 🐛 Defect Log | Linked inside Main QA Document | Google Sheets |
+| 🗺️ RTM (Requirements Traceability Matrix) | Linked inside Main QA Document | Google Sheets |
+| 📄 Automation Limitations | Linked inside Main QA Document | Google Doc |
+| 💻 Automation Scripts | This repository | GitHub |
+
+---
+
 ## Project Structure
 ```
 sweetshop-playwright/
@@ -75,24 +99,25 @@ npx playwright show-report
 
 | Spec File | Module | TC IDs | Tests |
 |-----------|--------|--------|-------|
-| 01_navigation.spec.ts | Navigation | TC-001 to TC-008 | 9 |
-| 02_sweets.spec.ts | Sweets / Products | TC-011 to TC-024 | 10 |
-| 03_login.spec.ts | Login | TC-026 to TC-042 | 16 |
-| 04_basket.spec.ts | Basket | TC-042 to TC-058 | 13 |
-| 05_about.spec.ts | About | TC-059 to TC-060 | 2 |
-| **TOTAL** | | | **50** |
+| 01_navigation.spec.ts | Navigation | TC-001 to TC-008, TC-003b | 9 |
+| 02_sweets.spec.ts | Sweets / Products | TC-011 to TC-024 | 12 |
+| 03_login.spec.ts | Login | TC-026 to TC-042 | 17 |
+| 04_basket.spec.ts | Basket | TC-043 to TC-059 | 15 |
+| 05_about.spec.ts | About | TC-060 to TC-061 | 2 |
+| **TOTAL** | | | **55** |
 
 ---
 
 ## Bugs Documented by Tests
 
-| Bug ID | Tests | What is Proved |
-|--------|-------|----------------|
-| BUG-001 | TC-035, TC-036, TC-038 | Login completely broken — no credentials work, no session set |
-| BUG-002 | TC-019 | Basket count stays at 0 after Add to Basket |
-| BUG-003 | TC-042 | All 3 social media icons link to # |
-| BUG-004 | TC-037 | Error references tooltip that does not exist |
-| BUG-006 | TC-003b | About nav link has href="/bout" instead of "/about" |
+| Bug ID | Tests | Status | What is Proved |
+|--------|-------|--------|----------------|
+| BUG-001 | TC-035, TC-036, TC-038 | OPEN | Login completely broken — no credentials work, no session set |
+| BUG-003 | TC-042 | OPEN | All 3 social media icons link to # |
+| BUG-004 | TC-037 | OPEN | Error references tooltip that does not exist |
+| BUG-002 | TC-019 | FIXED | Basket count now updates correctly after Add to Basket |
+| BUG-005 | TC-049 | FIXED | Invalid promo code now shows validation error |
+| BUG-006 | TC-003b | FIXED | About nav link href corrected to /about |
 
 ---
 

@@ -42,9 +42,9 @@ test.describe('Sweets / Products — TC-011 to TC-024', () => {
   });
 
   test('TC-016 | All prices display GBP £ symbol', async ({ page }) => {
-    const prices = page.locator('.card-text').filter({ hasText: /£/ });
+    const prices = page.locator('.card small.text-muted').filter({ hasText: /£/ });
     const count  = await prices.count();
-    expect(count).toBeGreaterThan(0);
+    expect(count).toBe(16);
   });
 
   test('TC-017 | Cheapest product Bubbly is at £0.10', async ({ page }) => {
@@ -59,25 +59,12 @@ test.describe('Sweets / Products — TC-011 to TC-024', () => {
     await sw.verifyProductPrice('Swansea Mixture', '£1.50');
   });
 
-  test('TC-019 | BUG-002 PROOF — Basket count does NOT update after Add to Basket', async ({ page }) => {
-    // This test PROVES Bug #002 — basket count stays at 0 after adding a product
+  test('TC-019 | Basket count updates after Add to Basket', async ({ page }) => {
     const sw = new SweetsPage(page);
     await sw.addProductToBasket('Chocolate Cups');
 
     const basketText = await page.locator('a[href="/basket"]').innerText();
-
-    // BUG-002: count stays at 0 — it should be 1
-    // Test expects '0 Basket' to confirm the bug is present
-    expect(basketText).toContain('0 Basket');
-
-    // Also prove the item was clicked — button text should change to "Remove"
-    // If it doesn't change either, the click itself is broken
-    const addBtn = page.locator('.card')
-      .filter({ hasText: 'Chocolate Cups' })
-      .locator('a.btn');
-    const btnText = await addBtn.innerText();
-    // Document what actually happens after click for the bug report
-    console.log(`After clicking Add to Basket, button text is: "${btnText}"`);
+    expect(basketText).toContain('1 Basket');
   });
 
   test('TC-022 | Sweets page loads in acceptable time', async ({ page }) => {

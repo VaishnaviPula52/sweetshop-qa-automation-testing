@@ -10,7 +10,7 @@ export class AboutPage {
   constructor(page: Page) {
     this.page        = page;
     this.heading     = page.locator('h1, h2').first();
-    this.promoBanner = page.locator('.alert, [class*="alert"], text=20% Off');
+    this.promoBanner = page.locator('.alert-success');
     this.pageContent = page.locator('.container, main, [class*="content"]').first();
   }
 
@@ -22,7 +22,7 @@ export class AboutPage {
   }
 
   async verifyPromoBannerVisible() {
-    await expect(this.promoBanner.first()).toBeVisible();
+    await expect(this.promoBanner.first()).toContainText('20% Off!');
   }
 
   async verifyContentVisible() {

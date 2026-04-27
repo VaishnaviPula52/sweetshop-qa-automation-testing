@@ -1,11 +1,11 @@
 // tests/01_navigation.spec.ts
-// TC-001 to TC-008 | Group G-02
+// TC-001 to TC-008, TC-003b | Group G-02
 
 import { test, expect } from '@playwright/test';
 import { NavigationPage } from '../pages/NavigationPage';
 import { urls } from '../fixtures/testData';
 
-test.describe('Navigation — TC-001 to TC-008', () => {
+test.describe('Navigation — TC-001 to TC-008, TC-003b', () => {
 
   test('TC-001 | Home page loads with correct title', async ({ page }) => {
     const nav = new NavigationPage(page);
@@ -25,9 +25,7 @@ test.describe('Navigation — TC-001 to TC-008', () => {
     const nav = new NavigationPage(page);
     await nav.goTo(urls.home);
     await nav.clickAbout();
-    // NOTE: About nav link has href="/bout" (broken) — Bug #006
-    // Test verifies click happens and some navigation occurs
-    await expect(page).toHaveURL(/.+/);
+    await expect(page).toHaveURL(/about/);
   });
 
   test('TC-004 | Login nav link navigates to login page', async ({ page }) => {
@@ -65,11 +63,10 @@ test.describe('Navigation — TC-001 to TC-008', () => {
     await expect(page.locator('a[href="/basket"]')).toContainText('0 Basket');
   });
 
-  test('TC-003b | BUG-006 PROOF — About nav link href is /bout not /about', async ({ page }) => {
+  test('TC-003b | About nav link href is /about', async ({ page }) => {
     await page.goto('/');
     const aboutHref = await page.locator('a:has-text("About")').first().getAttribute('href');
-    // This proves the bug — href is /bout (missing the 'a')
-    expect(aboutHref).not.toBe('/about');
+    expect(aboutHref).toBe('/about');
   });
 
 });
